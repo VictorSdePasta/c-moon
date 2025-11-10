@@ -1,74 +1,64 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
+create database cmoon;
 
-/*
-comandos para mysql server
-*/
+use cmoon;
 
-CREATE DATABASE aquatech;
-
-USE aquatech;
-
-CREATE TABLE empresa (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	razao_social VARCHAR(50),
-	cnpj CHAR(14),
-	codigo_ativacao VARCHAR(50)
+create table usuario(
+  id_usuario int auto_increment primary key,
+  nome varchar(50),
+  email varchar(100),
+  dtNasc date,
+  senha varchar(255),
+  pais varchar(50),
+  imagem_id_imagem int
 );
 
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+create table imagem(
+  id_imagem int primary key auto_increment,
+  titulo varchar(100),
+  urlLink varchar(255),
+  post_id_post int
 );
 
-alter table usuario add column cpf char(11);
-
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+create table post(
+  id_post int primary key auto_increment,
+  titulo varchar(100),
+  historia text,
+  epocaHistoria varchar(50),
+  dtPost date,
+  localPost varchar(100),
+  pais varchar(50),
+  usuario_id_usuario int
 );
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+create table subgenero(
+  id_subgenero int primary key auto_increment,
+  titulo varchar(50)
 );
 
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
+alter table usuario add constraint fk_imagem foreign key (imagem_id_imagem) references imagem(id_imagem);
+alter table imagem add constraint fk_post foreign key (post_id_post) references post(id_post);
+alter table post add constraint fk_usuario foreign key (usuario_id_usuario) references usuario(id_usuario);
 
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
+create table interacao(
+  usuario_id_usuario int,
+  post_id_post int,
+  curtiu tinyint,
+  comentario text,
+  dtInteracao date,
+  interacao_usuario_id_usuario int,
+  interacao_post_id_post int,
+  primary key (usuario_id_usuario, post_id_post, interacao_usuario_id_usuario, interacao_post_id_post),
+  constraint fk_usuario_interacao foreign key (usuario_id_usuario) references usuario(id_usuario),
+  constraint fk_post_interacao foreign key (post_id_post) references post(id_post),
+  constraint fk_interacao_usuario foreign key (interacao_usuario_id_usuario) references interacao(usuario_id_usuario),
+  constraint fk_interacao_post foreign key (interacao_post_id_post) references interacao(post_id_post)
 );
 
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B');
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
-insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);
-
-select * from usuario;
-select * from aquario;
-
-insert into medida (dht11_temperatura, dht11_umidade, fk_aquario, momento) values 
-(21,42,1,now()),
-(23,43,1,now()),
-(24,41,1,now()),
-(22,42,1,now()),
-(26, 40, 1,now());
+create table subgeneros_terror(
+  subgenero_id_subgenero int,
+  post_id_post int,
+  principal tinyint,
+  primary key (subgenero_id_subgenero, post_id_post),
+  constraint fk_subgenero foreign key (subgenero_id_subgenero) references subgenero(id_subgenero),
+  constraint fk_subgenero_post foreign key (post_id_post) references post(id_post)
+)
