@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&display=swap');
+
+body {
+  background-color: #0A0006;
+  margin: 0;
+  padding: 0;
+  font-family: "Grenze Gotisch", serif;
+  font-size: 2rem;
+}
+
+header {
+  background-color: #0A0006;
+  border-bottom: white solid 1px;
+  display: flex;
+  height: 100px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  position: sticky;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 30%;
+  justify-content: space-around;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  align-items: center;
+}
+
+ul:last-child {
+  justify-content: flex-end;
+
+  & li {
+    margin: 0 10%;
+  }
+}
+
+.entrar {
+  padding: 0 40%;
+  border: white 1px solid;
+  border-radius: 10px;
+}
+
+.cadastrar {
+  padding: 0 40%;
+  color: black;
+  background-color: #dfbad0;
+  border-radius: 10px;
+}
+
+.container {
+  background-image: url(../assets/imgs/fundo-index.png);
+  display: flex;
+  flex-direction: column;
+}

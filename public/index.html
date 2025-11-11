@@ -2,81 +2,71 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AquaTech | Página Inicial</title>
+  <title>Creepy Moon</title>
 
-    <script src="./js/sessao.js"></script>
+  <script src="./js/sessao.js"></script>
 
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/favicon2.ico">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="icon" href="./assets/imgs/logo.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
-    <div class="header">
-      <div class="container">
-        <h1 class="titulo">AquaTech</h1>
-        <ul class="navbar">
-          <li class="agora">
-            <a href="#">Inicial</a>
-          </li>
-          <li>
-            <a href="simulador.html">Simulador</a>
-          </li>
-          <li>|</li>
-          <li>
-            <a href="login.html">Login</a>
-          </li>
-          <li>
-            <a href="cadastro.html">Cadastro</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  
-    <div class="banner">
-      <div class="container">
-        <p>Preservando <span>hoje</span> para existirem <span>amanhã</span>.</p>
-      </div>
-    </div>
-  
-    <div class="social">
-      <div class="container">
-        <div class="boxes">
-          <div class="box">
-            <img src="assets/imgs/planet-earth_color.png">
-            <h4>Missão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/lightbulb_color.png">
-            <h4>Visão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/growth_color.png">
-            <h4>Valores</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
+  <header>
+    <ul>
+      <li class="current">
+        <a href="#project">O Projeto</a>
+      </li>
+      <li>
+        <a href="#cmoon">Sobre a C-Moon</a>
+      </li>
+      <li>
+        <a href="#creator">O Criador</a>
+      </li>
+    </ul>
+
+    <ul>
+      <li>
+        <a href="./login.html" class="entrar">Entrar</a>
+      </li>
+      <li>
+        <a href="./cadastrar.html" class="cadastrar">Cadastrar</a>
+      </li>
+    </ul>
+  </header>
+
+  <div class="container">
+    <div class="logo"><img src="./assets/imgs/logo.png" alt="Logo Creepy Moon"></div>
+    <div class="letter" id="project">A comunidade de terror de tempos em tempos se reunem ao redor do mundo sob a luz do
+      luar para comemorar e festejar diante as várias coisas estranhas de suas nações, o halloween nos estados unidos, o
+      dia dos mortos no méxico, entre vários outros tipos de eventos. Por que não registrar esses momentos, essas
+      histórias e particularidades do mundo? Por que não compartilhar as diversas culturas pelo mundo?...</div>
+    <div class="radio" id="cmoon">Você já ouviu falar nesse rumor? Existe um site sobre histórias de terror, dizem que
+      nele consta histórias de vários locais diferentes, tudo com o intuito de espalhar o terror pelo mundo... Dizem que
+      as histórias contadas lá podem ser verdade...</div>
+    <div class="tombstone" id="creator">
+      <div class="me">Victor Silva De Lima</div>
+      <div class="age" id="divAge"></div>
+      <div class="myDescription">
+        <div class="line">
+          <div class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in </div>
+          <div class="myphoto"><img src="./assets/imgs/jackenstein_battle_dancing_jack-o-lantern.gif"
+              alt="Foto do criador do site"></div>
         </div>
+        <div class="line">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+          eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+          mollit anim id est laborum.</div>
       </div>
     </div>
-  
-    <div class="footer">
-      <div class="container">
-        <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-        <span class="version">v1.0.0</span>
-      </div>
-    </div>
-  </body>
+  </div>
+</body>
 
 </html>
