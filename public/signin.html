@@ -6,27 +6,33 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>C-Moon - Entrar</title>
+  <title>C-Moon - Cadastrar</title>
 
   <script src="./js/sessao.js"></script>
 
-  <link rel="stylesheet" href="./css/login.css">
+  <link rel="stylesheet" href="./css/signin.css">
   <link rel="icon" href="./assets/imgs/logo.png">
 </head>
 
 <body>
   <div class="logo"><a href="./index.html"><img src="./assets/imgs/logo.png" alt="Imagem logo Creepy Moon"></a></div>
   <div class="container">
-    <h1>Conecte-se para sentir o terror</h1>
+    <h1>Cadastre-se para participar<br>do terror</h1>
     <div class="inputField">
-      <span class="inputLabel">E-mail:</span><input type="text" name="" id="inptEmail">
+      <span class="inputLabel">Nome:</span><input id="inptNome">
     </div>
     <div class="inputField">
-      <span class="inputLabel">Senha:</span><input type="password" name="" id="inptSenha">
+      <span class="inputLabel">E-mail:</span><input id="inptEmail">
+    </div>
+    <div class="inputField">
+      <span class="inputLabel">Senha:</span><input type="text" id="inptSenha">
+    </div>
+    <div class="inputField">
+      <span class="inputLabel">Confirmar Senha:</span><input type="text" id="inptConfirmarSenha">
     </div>
 
-    <button onclick="entrar()">Entrar</button>
-    <a class="signin" href="./signin.html">Não tenho cadastro</a>
+    <button onclick="cadastrar()">Cadastrar</button>
+    <a class="login" href="./signin.html">Já tenho cadastro</a>
   </div>
 </body>
 

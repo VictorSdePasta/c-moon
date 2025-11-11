@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&display=swap');
+
+body {
+  background-color: #0A0006;
+  background-image: url(../assets/imgs/skull-background.png);
+  background-position: right;
+  margin: 0;
+  padding: 0;
+  font-family: "Grenze Gotisch", serif;
+  font-size: 1.5rem;
+  overflow: hidden;
+}
+
+.container {
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #0A0006;
+  background-image: linear-gradient(to top, rgb(95, 32, 70, .45), #0a0006);
+  width: 35%;
+  align-items: center;
+  border: #DFBAD0 1px solid;
+  border-radius: 25px;
+  transform: translateY(-23%);
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  font-weight: 400;
+  margin: 0;
+}
+
+.logo {
+  justify-self: flex-end;
+  margin-right: 5%;
+  transform: translateY(40%);
+
+  & img {
+    width: 264px;
+  }
+}
+
+.inputField {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 300;
+  width: 70%;
+}
+
+input {
+  height: 60px;
+  border: #DFBAD0 1px solid;
+  border-radius: 25px;
+  background-color: #0A0006;
+  color: white;
+  font-family: "Grenze Gotisch", serif;
+  font-size: 1.8rem;
+  padding: 0 5%;
+  margin: 0 0 2% 0;
+}
+
+button {
+  margin-top: 10%;
+  background-color: #8A456E;
+  border: #DFBAD0 1px solid;
+  border-radius: 25px;
+  color: white;
+  font-family: "Grenze Gotisch", serif;
+  font-size: 2rem;
+  font-weight: 400;
+  width: 55%;
+  height: 75px;
+}
+
+.login {
+  margin: 5% 0 5% 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  background-color: #0A0006;
+  border-radius: 25px;
+  border: #8A456E 1px solid;
+  width: 45%;
+  height: 73px;
+}
