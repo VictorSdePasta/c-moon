@@ -32,83 +32,60 @@
     </div>
 
     <button onclick="cadastrar()">Cadastrar</button>
-    <a class="login" href="./signin.html">Já tenho cadastro</a>
+    <a class="login" href="./login.html">Já tenho cadastro</a>
   </div>
 </body>
 
 </html>
 
 <script>
+  function cadastrar() {
+    let nomeUser = inptNome.value
+    let emailUser = inptEmail.value
+    let senhaUser = inptSenha.value
+    let confirmarSenhaUser = inptConfirmarSenha.value
 
-
-  function entrar() {
-    aguardar();
-
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-
-    if (emailVar == "" || senhaVar == "") {
-      cardErro.style.display = "block"
-      mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-      finalizarAguardar();
-      return false;
-    }
-    else {
-      setInterval(sumirMensagem, 5000)
-    }
-
-    console.log("FORM LOGIN: ", emailVar);
-    console.log("FORM SENHA: ", senhaVar);
-
-    fetch("/usuarios/autenticar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        emailServer: emailVar,
-        senhaServer: senhaVar
-      })
-    }).then(function (resposta) {
-      console.log("ESTOU NO THEN DO entrar()!")
-
-      if (resposta.ok) {
-        console.log(resposta);
-
-        resposta.json().then(json => {
-          console.log(json);
-          console.log(JSON.stringify(json));
-          sessionStorage.EMAIL_USUARIO = json.email;
-          sessionStorage.CPF_USUARIO = json.cpf;
-          sessionStorage.NOME_USUARIO = json.nome;
-          sessionStorage.ID_USUARIO = json.id;
-          sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
-
-          setTimeout(function () {
-            window.location = "./dashboard/cards.html";
-          }, 1000); // apenas para exibir o loading
-
-        });
+    if (nomeUser == "" || emailUser == "" || senhaUser == "" || confirmarSenhaUser == "") {
+      
+      if (senhaUser != confirmarSenhaUser) {
 
       } else {
+        fetch("/usuarios/cadastrar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            nomeServer: nomeUser,
+            emailServer: emailUser,
+            senhaServer: senhaUser
+          })
+        }).then(function (resposta) {
+          if (resposta.ok) {
+            console.log(resposta);
 
-        console.log("Houve um erro ao tentar realizar o login!");
+            resposta.json().then(json => {
+              console.log(json);
+              console.log(JSON.stringify(json));
 
-        resposta.text().then(texto => {
-          console.error(texto);
-          finalizarAguardar(texto);
-        });
+              setTimeout(function () {
+                window.location = "./login.html";
+              }, 1000);
+
+            });
+          } else {
+            console.log("Houve um erro ao tentar realizar o cadastro!");
+
+            resposta.text().then(texto => {
+              console.error(texto);
+              finalizarAguardar(texto);
+            });
+          }
+        }).catch(function (erro) {
+          console.log(erro);
+        })
+        return false;
       }
-
-    }).catch(function (erro) {
-      console.log(erro);
-    })
-
-    return false;
+    }
   }
-
-  function sumirMensagem() {
-    cardErro.style.display = "none"
-  }
-
 </script>

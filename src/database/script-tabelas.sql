@@ -61,4 +61,4 @@ create table subgeneros_terror(
   primary key (subgenero_id_subgenero, post_id_post),
   constraint fk_subgenero foreign key (subgenero_id_subgenero) references subgenero(id_subgenero),
   constraint fk_subgenero_post foreign key (post_id_post) references post(id_post)
-)
+);
