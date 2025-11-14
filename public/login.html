@@ -24,6 +24,7 @@
     <div class="inputField">
       <span class="inputLabel">Senha:</span><input type="password" name="" id="inptSenha">
     </div>
+    <div class="erro" id="divErro">Erro</div>
 
     <button onclick="entrar()">Entrar</button>
     <a class="signin" href="./signin.html">Não tenho cadastro</a>
@@ -32,61 +33,4 @@
 
 </html>
 
-<script>
-  function entrar() {
-    let emailUser = inptEmail.value;
-    let senhaUser = inptSenha.value;
-
-    if (emailUser == "" || senhaUser == "") {
-
-    } else {
-      fetch("/usuarios/autenticar", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          emailServer: emailUser,
-          senhaServer: senhaUser
-        })
-      }).then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
-
-        if (resposta.ok) {
-          console.log(resposta);
-
-          resposta.json().then(json => {
-            console.log(json);
-            console.log(JSON.stringify(json));
-            sessionStorage.NOME_USUARIO = json.nome;
-            sessionStorage.ID_USUARIO = json.id;
-
-            setTimeout(function () {
-              window.location = "./dashboard/cards.html";
-            }, 1000); // apenas para exibir o loading
-
-          });
-
-        } else {
-
-          console.log("Houve um erro ao tentar realizar o login!");
-
-          resposta.text().then(texto => {
-            console.error(texto);
-            finalizarAguardar(texto);
-          });
-        }
-
-      }).catch(function (erro) {
-        console.log(erro);
-      })
-
-      return false;
-    }
-  }
-
-  function sumirMensagem() {
-    cardErro.style.display = "none"
-  }
-
-</script>
+<script src="./js/validacoes.js"></script>

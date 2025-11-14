@@ -20,16 +20,21 @@
     <h1>Cadastre-se para participar<br>do terror</h1>
     <div class="inputField">
       <span class="inputLabel">Nome:</span><input id="inptNome">
+      <div class="erro" id="divErroNome"></div>
     </div>
     <div class="inputField">
       <span class="inputLabel">E-mail:</span><input id="inptEmail">
+      <div class="erro" id="divErroEmail"></div>
     </div>
     <div class="inputField">
       <span class="inputLabel">Senha:</span><input type="text" id="inptSenha">
+      <div class="erro" id="divErroSenha"></div>
     </div>
     <div class="inputField">
       <span class="inputLabel">Confirmar Senha:</span><input type="text" id="inptConfirmarSenha">
+      <div class="erro" id="divErroConfirmar"></div>
     </div>
+    <div class="validacao" id="divValidacao"></div>
 
     <button onclick="cadastrar()">Cadastrar</button>
     <a class="login" href="./login.html">Já tenho cadastro</a>
@@ -38,54 +43,4 @@
 
 </html>
 
-<script>
-  function cadastrar() {
-    let nomeUser = inptNome.value
-    let emailUser = inptEmail.value
-    let senhaUser = inptSenha.value
-    let confirmarSenhaUser = inptConfirmarSenha.value
-
-    if (nomeUser == "" || emailUser == "" || senhaUser == "" || confirmarSenhaUser == "") {
-      
-      if (senhaUser != confirmarSenhaUser) {
-
-      } else {
-        fetch("/usuarios/cadastrar", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            nomeServer: nomeUser,
-            emailServer: emailUser,
-            senhaServer: senhaUser
-          })
-        }).then(function (resposta) {
-          if (resposta.ok) {
-            console.log(resposta);
-
-            resposta.json().then(json => {
-              console.log(json);
-              console.log(JSON.stringify(json));
-
-              setTimeout(function () {
-                window.location = "./login.html";
-              }, 1000);
-
-            });
-          } else {
-            console.log("Houve um erro ao tentar realizar o cadastro!");
-
-            resposta.text().then(texto => {
-              console.error(texto);
-              finalizarAguardar(texto);
-            });
-          }
-        }).catch(function (erro) {
-          console.log(erro);
-        })
-        return false;
-      }
-    }
-  }
-</script>
+<script src="./js/validacoes.js"></script>

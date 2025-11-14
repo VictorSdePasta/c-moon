@@ -8,7 +8,10 @@ body {
   padding: 0;
   font-family: "Grenze Gotisch", serif;
   font-size: 1.5rem;
-  overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 .container {
@@ -81,10 +84,20 @@ button {
   align-items: center;
   justify-content: center;
   color: white;
+  text-align: center;
   text-decoration: none;
   background-color: #0A0006;
   border-radius: 25px;
   border: #8A456E 1px solid;
   width: 45%;
   height: 73px;
+}
+
+.erro {
+  color: red;
+  font-size: 0.9em;
+}
+
+.validacao {
+  color: green;
 }
