@@ -24,7 +24,7 @@ body::-webkit-scrollbar {
   align-items: center;
   border: #DFBAD0 1px solid;
   border-radius: 25px;
-  transform: translateY(-23%);
+  transform: translateY(-20%);
 }
 
 h1 {
