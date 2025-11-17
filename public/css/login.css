@@ -75,6 +75,7 @@ button {
   font-weight: 400;
   width: 55%;
   height: 75px;
+  cursor: pointer;
 }
 
 .signin {
