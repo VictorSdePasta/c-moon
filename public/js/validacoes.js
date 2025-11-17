@@ -5,54 +5,58 @@ function cadastrar() {
   let confirmarSenhaUser = inptConfirmarSenha.value.trim()
 
   if (nomeUser == "" || emailUser == "" || senhaUser == "" || confirmarSenhaUser == "") {
-    if (nomeUser == "") { divErroNome.innerHTML = `O campo nome está vazio.` }
-    if (emailUser == "") { divErroEmail.innerHTML = `O campo email está vazio.` }
-    if (senhaUser == "") { divErroSenha.innerHTML = `O campo senha está vazio.` }
-    if (confirmarSenhaUser == "") { divErroConfirmar.innerHTML = `O campo confirmar senha está vazio.` }
+    if (nomeUser == "") { divErroNome.innerHTML = `O campo nome está vazio.` } else { divErroNome.innerHTML = `` }
+    if (emailUser == "") { divErroEmail.innerHTML = `O campo email está vazio.` } else { divErroEmail.innerHTML = `` }
+    if (senhaUser == "") { divErroSenha.innerHTML = `O campo senha está vazio.` } else { divErroSenha.innerHTML = `` }
+    if (confirmarSenhaUser == "") { divErroConfirmar.innerHTML = `O campo confirmar senha está vazio.` } else { divErroConfirmar.innerHTML = `` }
   } else {
+    divErroNome.innerHTML = ``
+    divErroEmail.innerHTML = ``
+    divErroSenha.innerHTML = ``
+    divErroConfirmar.innerHTML = ``
+
     if (senhaUser != confirmarSenhaUser) {
       divErroSenha.innerHTML = `As senhas não coincidem.`
-    } else {
-      if (validar(emailUser, senhaUser)) {
-        fetch("/usuarios/cadastrar", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            nomeServer: nomeUser,
-            emailServer: emailUser,
-            senhaServer: senhaUser
-          })
-        }).then(function (resposta) {
-          if (resposta.ok) {
-            console.log(resposta);
-
-            resposta.json().then(json => {
-              console.log(json);
-              console.log(JSON.stringify(json));
-
-              divValidacao.innerHTML = `Cadastro realizado, entre para o terror!`
-
-              setTimeout(function () {
-                window.location = "./login.html";
-              }, 3000);
-            });
-          } else {
-            console.log("Houve um erro ao tentar realizar o cadastro!");
-
-            resposta.text().then(texto => {
-              console.error(texto);
-              finalizarAguardar(texto);
-            });
-          }
-        }).catch(function (erro) {
-          console.log(erro);
+    } else if (validarNome() && validarEmail() && validarSenha()) {
+      fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          nomeServer: nomeUser,
+          emailServer: emailUser,
+          senhaServer: senhaUser
         })
-      }
+      }).then(function (resposta) {
+        if (resposta.ok) {
+          console.log(resposta);
+
+          resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+
+            divValidacao.innerHTML = `Cadastro realizado, entre para o terror!`
+
+            setTimeout(function () {
+              window.location = "./login.html";
+            }, 3000);
+          });
+        } else {
+          console.log("Houve um erro ao tentar realizar o cadastro!");
+
+          resposta.text().then(texto => {
+            console.error(texto);
+            finalizarAguardar(texto);
+          });
+        }
+      }).catch(function (erro) {
+        console.log(erro);
+      })
     }
   }
 }
+
 
 function entrar() {
   let emailUser = inptEmail.value;
@@ -92,7 +96,7 @@ function entrar() {
           divErro.innerHTML = `Email e/ou senha estão incorretos.`
         });
       }
-      
+
     }).catch(function (erro) {
       divErro.innerHTML = `Algum erro inesperado ocorreu, tente novamente mais tarde.`
       console.log(erro);
@@ -100,10 +104,25 @@ function entrar() {
   }
 }
 
-function validar(emailUser, senhaUser) {
-  let emailValido = false
-  let senhaValido = false
+function validarNome() {
+  let nomeUser = inptNome.value.trim()
+
+  if (nomeUser == '') {
+    divErroNome.innerHTML = `O campo nome não pode estar vazio.`
+    return false
+  } else if (nomeUser.length < 3) {
+    divErroNome.innerHTML = `O nome deve ter pelo menos 3 letras.`
+    return false
+  }
+
+  divErroNome.innerHTML = ``
+  return true
+}
+
+function validarEmail() {
+  let emailUser = inptEmail.value.trim()
   let atPosition = emailUser.indexOf('@')
+  let emailValido = false
 
   if (atPosition >= 0) {
     for (let i = 0; i < emailUser.length; i++) {
@@ -116,35 +135,49 @@ function validar(emailUser, senhaUser) {
 
   if (!emailValido) {
     divErroEmail.innerHTML = `Digite um email válido.`
-  } else {
-    divErroEmail.innerHTML = ``
+    return false
+  }
+  divErroEmail.innerHTML = ``
+  return true
+}
+
+function validarSenha() {
+  let senhaUser = inptSenha.value.trim()
+  let temNumero = false
+  let temCaracter = false
+  let senhaValido = true
+
+  for (var i = 0; i < senhaUser.length; i++) {
+    if ('0123456789'.indexOf(senhaUser[i]) != -1) {
+      temNumero = true
+    }
+  }
+  
+  for (var i = 0; i < senhaUser.length; i++) {
+    if (`|!¹@²#³$£%¢¨¬&*()-_=+§´[{}]ªº^~<,>.:;?/°`.indexOf(senhaUser[i]) != -1) {
+      temCaracter = true
+    }
+  }
+  
+  for (var i = 0; i < senhaUser.length; i++) {
+    if ('`'.indexOf(senhaUser[i]) != -1) {
+      temCaracter = true
+    }
   }
 
-  if (senhaUser.toUpperCase() == senhaUser.toLowerCase() || senhaUser.toUpperCase() == senhaUser.toUpperCase()) {
+  if (!temNumero || !temCaracter || senhaUser.toUpperCase() == senhaUser || senhaUser.toLowerCase() == senhaUser) {
     senhaValido = false
   }
 
-  for (var i = 0; i < senhaUser.length; i++) {
-    if ('0123456789'.indexOf(senhaUser[i]) == -1) {
-      senhaValido = true
-    }
-    if (`|!¹@²#³$£%¢¨¬&*()-_=+§´[{}]ªº^~<,>.:;?/°`.indexOf(senhaUser[i]) == -1) {
-      senhaValido = true
-    }
-    if ('`'.indexOf(senhaUser[i]) == -1) {
-      senhaValido = true
-    }
-  }
+  console.log(senhaUser)
+  console.log(temCaracter)
+  console.log(temNumero)
 
   if (!senhaValido) {
     divErroSenha.innerHTML = `A senha deve conter uma letra maiúscula, uma minúscula, um número e um carácter especial.`
-  } else {
-    divErroSenha.innerHTML = ``
+    return false
   }
 
-  if (emailValido && senhaValido) {
-    return true
-  }
-
-  return false
+  divErroSenha.innerHTML = ``
+  return true
 }

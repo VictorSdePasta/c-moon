@@ -17,19 +17,19 @@
   <div class="container">
     <h1>Cadastre-se para participar<br>do terror</h1>
     <div class="inputField">
-      <span class="inputLabel">Nome:</span><input id="inptNome">
+      <span class="inputLabel">Nome:</span><input onkeyup="validarNome()" id="inptNome">
       <div class="erro" id="divErroNome"></div>
     </div>
     <div class="inputField">
-      <span class="inputLabel">E-mail:</span><input id="inptEmail">
+      <span class="inputLabel">E-mail:</span><input onkeyup="validarEmail()" id="inptEmail">
       <div class="erro" id="divErroEmail"></div>
     </div>
     <div class="inputField">
-      <span class="inputLabel">Senha:</span><input type="text" id="inptSenha">
+      <span class="inputLabel">Senha:</span><input type="password" onkeyup="validarSenha()" id="inptSenha">
       <div class="erro" id="divErroSenha"></div>
     </div>
     <div class="inputField">
-      <span class="inputLabel">Confirmar Senha:</span><input type="text" id="inptConfirmarSenha">
+      <span class="inputLabel">Confirmar Senha:</span><input type="password" id="inptConfirmarSenha">
       <div class="erro" id="divErroConfirmar"></div>
     </div>
     <div class="validacao" id="divValidacao"></div>
