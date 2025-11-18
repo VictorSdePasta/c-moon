@@ -5,13 +5,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>C-Moon - Posts</title>
 
-  <link rel="icon" href="./assets/imgs/logo.png">
+  <script src="./js/sessao.js"></script>
+  <link rel="icon" href="../assets/imgs/logo.png">
   <link rel="stylesheet" href="../css/feed.css">
 </head>
 
-<body>
+<body onload="validarSessao()">
   <div class="menu">
     <div class="sectionsLayout">
       <div class="profile" id="divProfilePhoto"></div>
@@ -60,8 +62,8 @@
               fill="white" />
           </svg></a>
       </div>
-      <a href="../index.html" class="logout"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 20 20" version="1.1">
+      <a href="../index.html" class="logout"><svg xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 20 20" version="1.1">
           <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <g id="Dribbble-Light-Preview" transform="translate(-180.000000, -6479.000000)" fill="white">
               <g id="icons" transform="translate(56.000000, 160.000000)">
@@ -186,7 +188,6 @@
 </body>
 
 </html>
-
 <script>
 
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
