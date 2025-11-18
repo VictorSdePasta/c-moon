@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100..900&display=swap');
+
+html {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0A0006;
+  margin: 0;
+  padding: 0;
+  font-family: "Grenze Gotisch", serif;
+  font-size: 1.5rem;
+  color: white;
+  height: 100%;
+  overflow: auto;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.menu {
+  height: 100%;
+  position: fixed;
+  display: flex;
+}
+
+.sectionsLayout {
+  width: 80px;
+  background-color: #0A0006;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15% 0;
+  align-items: center;
+}
+
+.sections {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 30%;
+  justify-content: space-around;
+}
+
+svg {
+  width: 40px;
+  height: 40px;
+}
+
+.easterEggSplit {
+  width: 183px;
+  background-image: url('../assets/imgs/menu-web.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.profile {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #DFBAD0;
+  border-radius: 50%;
+  background-image: url('../assets/imgs/jackenstein_battle_dancing_jack-o-lantern.gif');
+  background-position: center;
+}
+
+.pageContainer {
+  width: 92%;
+  height: 100%;
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+}
+
+.fields {
+  border: #DFBAD0 1px solid;
+  border-radius: 25px;
+  display: flex;
+  width: 90%;
+  height: 80%;
+  justify-content: space-evenly;
+}
+
+.column{
+  margin: 5% 0;
+  width: 45%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+.line {
+  margin: 5% 0;
+  display: flex;
+  width: 45%;
+  height: 80%;
+  justify-content: space-between;
+}
+
+.title {
+  display: flex;
+}
