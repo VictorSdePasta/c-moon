@@ -67,41 +67,128 @@ svg {
 
 .pageContainer {
   width: 92%;
+  height: 100%;
   justify-self: end;
   display: flex;
   flex-direction: column;
 }
 
-.logo {
-  position: fixed;
-  align-self: flex-end;
+.search {
+  width: 95%;
+  justify-content: space-evenly;
+}
 
-  & img {
-    width: 145px;
+.column {
+  margin: 5% 0;
+  width: 45%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.line {
+  margin: 5% 0;
+  display: flex;
+  width: 45%;
+  height: 80%;
+  justify-content: space-between;
+}
+
+.title {
+  display: flex;
+  height: 10%;
+  align-items: center;
+  gap: 5%;
+  width: 100%;
+}
+
+input {
+  background-color: #0A0006;
+  border: none;
+  border-bottom: white 1px solid;
+  color: white;
+  font-family: "Grenze Gotisch", serif;
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+input:focus {
+  outline: none;
+  cursor: text;
+}
+
+label {
+  color: #DFBAD0;
+  font-size: 2rem;
+}
+
+button {
+  color: #F25C05;
+  background: none;
+  background-color: #0A0006;
+  border: white 1px solid;
+  border-radius: 15px;
+  font-family: "Grenze Gotisch", serif;
+  font-size: 1.7rem;
+}
+
+.column.selects {
+  justify-content: space-between;
+
+  & .line {
+    width: 100%;
+    height: min-content;
+    max-height: 80%;
+    margin: 0;
+
+    & .column {
+      margin: 0;
+    }
+  }
+
+  & .line:last-child {
+    height: 15%;
+    justify-content: center;
+    align-items: center;
+
+    & button {
+      height: 50%;
+      width: 30%;
+      color: #B4789C;
+    }
   }
 }
 
-.sectionSplit {
-  height: 135px;
-  width: 95%;
-  align-self: end;
-  margin: 0 5%;
-  background-image: url('../assets/imgs/section-web.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: right;
+.selects input {
+  display: none;
 }
 
-#posts {
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 5%;
+#divImagesUploaded {
+  max-height: 15%;
+  overflow: auto;
+}
+
+#divImagesUploaded::-webkit-scrollbar {
+  display: none;
+}
+
+#divSubgenreSelected {
+  margin: 0 0 5% 5%;
+  align-self: flex-start;
+  max-height: 20%;
+  overflow: auto;
+}
+
+#divSubgenreSelected::-webkit-scrollbar {
+  display: none;
 }
 
 .postSection {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 95%;
+  margin: 5% 0;
 }
 
 .post {
