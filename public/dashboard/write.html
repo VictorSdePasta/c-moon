@@ -7,7 +7,7 @@
 
   <title>C-Moon - Escrever Post</title>
 
-  <script src="./js/sessao.js"></script>
+  <script src="../js/sessao.js"></script>
   <link rel="stylesheet" href="../css/write.css">
   <link rel="icon" href="../assets/imgs/logo.png">
 </head>
@@ -83,38 +83,49 @@
     <div class="fields">
       <div class="column">
         <div class="title">
-          <h3>Titulo:</h3>
+          <label for="inptTitle">Titulo:</label>
           <input id="inptTitle">
         </div>
         <div class="tale">
-          <h3>Conto:</h3>
+          <label for="inptTale">Conto:</label>
           <textarea id="inptTale"></textarea>
         </div>
       </div>
-      <div class="line">
-        <div class="column">
-          <select id="selSubGenre">
-            <option selected disabled value="#">Adicionar Subgênero</option>
-            <option value="99">Outro</option>
-          </select>
-          <div id="divSubgenreSelected"></div>
-        </div>
+      <div class="column selects">
+        <div class="line">
           <div class="column">
-          <select id="selSubGenre">
-            <option selected disabled value="#">Adicionar Subgênero</option>
-            <option value="99">Outro</option>
-          </select>
-          <div id="divSubgenreSelected"></div>
-          <select id="selSubGenre">
-            <option selected disabled value="#">Adicionar Subgênero</option>
-            <option value="99">Outro</option>
-          </select>
-          <div id="divSubgenreSelected"></div>
-          <select id="selSubGenre">
-            <option selected disabled value="#">Adicionar Subgênero</option>
-            <option value="99">Outro</option>
-          </select>
-          <div id="divSubgenreSelected"></div>
+            <select id="selSubGenre">
+              <option selected disabled value="#">Adicionar Subgênero</option>
+              <option value="99">Outro</option>
+            </select>
+            <input id="inptOtherSubgenre">
+            <div id="divSubgenreSelected">[Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br>[Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br>[Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br>[Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br></div>
+            <div>
+              <button onclick="upload()">Adicionar Imagem</button>
+              <div class="spider"><img src="../assets/imgs/spider.png" alt="Aranha decorativa"></div>
+            </div>
+            <div id="divImagesUploaded">[Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br>[Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br>[Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br>[Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br></div>
+          </div>
+          <div class="column">
+            <select id="selEpoca">
+              <option selected disabled value="#">Epóca do Conto</option>
+              <option value="99">Outro</option>
+            </select>
+            <input id="inptOtherEpoca"></input>
+            <select id="selLocation">
+              <option selected disabled value="#">Local do Conto</option>
+              <option value="99">Outro</option>
+            </select>
+            <input id="inptOtherLocation"></input>
+            <select id="selCountry">
+              <option selected disabled value="#">País de Origem</option>
+              <option value="99">Outro</option>
+            </select>
+            <input id="inptOtherSubgenre"></input>
+          </div>
+        </div>
+        <div class="line">
+          <button onclick="post()">Postar</button>
         </div>
       </div>
     </div>

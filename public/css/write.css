@@ -82,12 +82,13 @@ svg {
   justify-content: space-evenly;
 }
 
-.column{
+.column {
   margin: 5% 0;
   width: 45%;
   height: 80%;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .line {
@@ -96,8 +97,166 @@ svg {
   width: 45%;
   height: 80%;
   justify-content: space-between;
+
+  & .column {
+    height: 100%;
+  }
 }
 
 .title {
   display: flex;
+  height: 10%;
+  align-items: center;
+  gap: 5%;
+  width: 100%;
+}
+
+input {
+  background-color: #0A0006;
+  border: none;
+  border-bottom: white 1px solid;
+  color: white;
+  font-family: "Grenze Gotisch", serif;
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+input:focus {
+  outline: none;
+  cursor: text;
+}
+
+label {
+  color: #DFBAD0;
+  font-size: 2rem;
+}
+
+.tale {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  margin: 3% 0;
+}
+
+textarea {
+  margin: 0 5%;
+  height: 100%;
+  width: 100%;
+  background-color: #0A0006;
+  border: 1px solid white;
+  border-radius: 25px;
+  resize: none;
+  color: white;
+  font-family: "Grenze Gotisch", serif;
+  font-size: 1.5rem;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+textarea::-webkit-scrollbar {
+  display: none;
+}
+
+select {
+  background: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  color: #F25C05;
+  font-family: "Grenze Gotisch", serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  text-align: center;
+  padding: 0 5%;
+  height: 60px;
+  width: 300px;
+  margin: 7% 0;
+}
+
+select:focus {
+  outline: none;
+}
+
+#selSubGenre {
+  background-image: url('../assets/imgs/button-web-left-bottom.png');
+}
+
+#selEpoca {
+  background-image: url('../assets/imgs/button-web-right-bottom.png');
+}
+
+#selLocation {
+  border: 1px white solid;
+  border-radius: 15px;
+  width: 200px;
+  align-self: end;
+  margin-right: 2%;
+}
+
+#selCountry {
+  background-image: url('../assets/imgs/button-web-right-top.png');
+}
+
+button {
+  color: #F25C05;
+  background: none;
+  background-color: #0A0006;
+  border: white 1px solid;
+  border-radius: 15px;
+  font-family: "Grenze Gotisch", serif;
+  font-size: 1.7rem;
+  width: 100%;
+}
+
+.column.selects {
+  justify-content: space-between;
+
+  & .line {
+    width: 100%;
+    height: min-content;
+    max-height: 80%;
+    margin: 0;
+
+    & .column {
+      margin: 0;
+    }
+  }
+
+  & .line:last-child {
+    height: 15%;
+    justify-content: center;
+    align-items: center;
+
+    & button {
+      height: 50%;
+      width: 30%;
+      color: #B4789C;
+    }
+  }
+}
+
+.selects input {
+  display: none;
+}
+
+#divImagesUploaded {
+  max-height: 15%;
+  overflow: auto;
+}
+
+#divImagesUploaded::-webkit-scrollbar {
+  display: none;
+}
+
+#divSubgenreSelected {
+  margin: 0 0 5% 5%;
+  align-self: flex-start;
+  max-height: 20%;
+  overflow: auto;
+}
+
+#divSubgenreSelected::-webkit-scrollbar {
+  display: none;
 }
