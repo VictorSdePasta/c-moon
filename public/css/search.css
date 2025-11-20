@@ -78,31 +78,6 @@ svg {
   justify-content: space-evenly;
 }
 
-.column {
-  margin: 5% 0;
-  width: 45%;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.line {
-  margin: 5% 0;
-  display: flex;
-  width: 45%;
-  height: 80%;
-  justify-content: space-between;
-}
-
-.title {
-  display: flex;
-  height: 10%;
-  align-items: center;
-  gap: 5%;
-  width: 100%;
-}
-
 input {
   background-color: #0A0006;
   border: none;
@@ -131,57 +106,6 @@ button {
   border-radius: 15px;
   font-family: "Grenze Gotisch", serif;
   font-size: 1.7rem;
-}
-
-.column.selects {
-  justify-content: space-between;
-
-  & .line {
-    width: 100%;
-    height: min-content;
-    max-height: 80%;
-    margin: 0;
-
-    & .column {
-      margin: 0;
-    }
-  }
-
-  & .line:last-child {
-    height: 15%;
-    justify-content: center;
-    align-items: center;
-
-    & button {
-      height: 50%;
-      width: 30%;
-      color: #B4789C;
-    }
-  }
-}
-
-.selects input {
-  display: none;
-}
-
-#divImagesUploaded {
-  max-height: 15%;
-  overflow: auto;
-}
-
-#divImagesUploaded::-webkit-scrollbar {
-  display: none;
-}
-
-#divSubgenreSelected {
-  margin: 0 0 5% 5%;
-  align-self: flex-start;
-  max-height: 20%;
-  overflow: auto;
-}
-
-#divSubgenreSelected::-webkit-scrollbar {
-  display: none;
 }
 
 .postSection {

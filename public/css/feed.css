@@ -72,12 +72,57 @@ svg {
   flex-direction: column;
 }
 
+.feed {
+  display: flex;
+  flex-direction: column;
+}
+
 .logo {
   position: fixed;
   align-self: flex-end;
 
   & img {
     width: 145px;
+  }
+}
+
+.highposts {
+  display: flex;
+  justify-content: center;
+}
+
+.cardlists {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardplace {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 20%;
+
+  & h3 {
+    padding-left: 10%;
+    position: relative;
+    transform: translateY(-150%);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(#0a0006, rgb(95, 32, 70, .30));
+  border: white 1px solid;
+  border-radius: 20px;
+  width: 100%;
+  height: 400px;
+
+  & img {
+    z-index: -1;
+    height: 100%;
+    width: 100%;
   }
 }
 
