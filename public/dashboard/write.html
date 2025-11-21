@@ -12,7 +12,7 @@
   <link rel="icon" href="../assets/imgs/logo.png">
 </head>
 
-<body onload="limparSessao()">
+<body onload="validarSessao()">
   <div class="menu">
     <div class="sectionsLayout">
       <div class="profile" id="divProfilePhoto"></div>
@@ -79,57 +79,58 @@
     <div class="easterEggSplit"></div>
   </div>
   <div class="pageContainer">
-    <h1>Escreva um relato! Caro <span id="userName">[Usuarop]</span></h1>
+    <h1>Escreva um relato! Caro <span id="userName">Usuario</span></h1>
     <div class="fields">
       <div class="column">
         <div class="title">
           <label for="inptTitle">Titulo:</label>
-          <input id="inptTitle">
+          <input id="inptTitle" placeholder="Digite o titulo...">
         </div>
         <div class="tale">
           <label for="inptTale">Conto:</label>
-          <textarea id="inptTale"></textarea>
+          <textarea id="inptTale" placeholder="Digite seu conto..."></textarea>
         </div>
       </div>
       <div class="column selects">
         <div class="line">
           <div class="column">
-            <select id="selSubGenre">
+            <select id="selSubGenre" onclick="selectSubGenre()">
               <option selected disabled value="#">Adicionar Subgênero</option>
               <option value="99">Outro</option>
             </select>
-            <input id="inptOtherSubgenre">
-            <div id="divSubgenreSelected">[Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br>[Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br>[Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br>[Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br></div>
+            <input id="inptOtherSubGenre" placeholder="Digite o subgênero...">
+            <div id="divSubGenreSelected"></div>
             <div>
               <button onclick="upload()">Adicionar Imagem</button>
               <div class="spider"><img src="../assets/imgs/spider.png" alt="Aranha decorativa"></div>
             </div>
-            <div id="divImagesUploaded">[Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br>[Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br>[Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br>[Arquivo de imagem] <br> [Arquivo de imagem] <br> [Arquivo de imagem] <br></div>
+            <div id="divImagesUploaded"></div>
           </div>
           <div class="column">
-            <select id="selEpoca">
+            <select id="selAge" onclick="selectAge()">
               <option selected disabled value="#">Epóca do Conto</option>
               <option value="99">Outro</option>
             </select>
-            <input id="inptOtherEpoca"></input>
-            <select id="selLocation">
+            <input id="inptOtherAge" placeholder="Digite a época..."></input>
+            <select id="selLocation" onclick="selectLocation()">
               <option selected disabled value="#">Local do Conto</option>
               <option value="99">Outro</option>
             </select>
-            <input id="inptOtherLocation"></input>
-            <select id="selCountry">
+            <input id="inptOtherLocation" placeholder="Digite o local..."></input>
+            <select id="selCountry" onclick="selectCountry()">
               <option selected disabled value="#">País de Origem</option>
               <option value="99">Outro</option>
             </select>
-            <input id="inptOtherSubgenre"></input>
+            <input id="inptOtherCountry" placeholder="Digite o país..."></input>
           </div>
         </div>
         <div class="line">
           <button onclick="post()">Postar</button>
+          <div id="divMsg"></div>
         </div>
       </div>
     </div>
   </div>
 </body>
-
+<script src="../js/post.js"></script>
 </html>

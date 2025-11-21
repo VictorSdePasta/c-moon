@@ -27,8 +27,7 @@ create table post(
   id_post int primary key auto_increment,
   titulo varchar(100),
   historia text,
-  dtPost date,
-  localPost varchar(100),
+  dtPost datetime default current_timestamp,
   usuario_id_usuario int
 );
 
