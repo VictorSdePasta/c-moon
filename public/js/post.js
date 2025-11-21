@@ -74,9 +74,39 @@ function post() {
     else if (otherSubG) { subgenreBody = otherSubG }
     else { subgenreBody = null }
 
-    let ageBody = age == '#' ? (otherAge == '' ? null : otherAge) : age
-    let locBody = loc == '#' ? (otherLoc == '' ? null : otherLoc) : loc
+    let ageBody
+    if (age == '#') {
+      if (otherAge == '') {
+        ageBody = null
+      } else {
+        ageBody = otherAge
+      }
+    } else {
+      ageBody = age
+    }
+    
+    let locBody 
+    if (loc == '#') {
+      if (otherLoc == '') {
+        locBody = null
+      } else {
+        locBody = otherLoc
+      }
+    } else {
+      locBody = loc
+    }
+    
     let countryBody = country == '#' ? (otherCountry == '' ? null : otherCountry) : country
+    
+    if (age == '#') {
+      if (otherAge == '') {
+        ageBody = null
+      } else {
+        ageBody = otherAge
+      }
+    } else {
+      ageBody = age
+    }
 
     fetch(`/posts/uploadPost/${idUser}`, {
       method: "post",
