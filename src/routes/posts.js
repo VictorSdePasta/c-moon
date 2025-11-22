@@ -2,6 +2,11 @@ var express = require("express");
 var router = express.Router();
 
 var postsController = require("../controllers/postsController");
+const upload = require('../config/configUpload');
+
+router.post('/uploadImage', upload.single('postImage'), (req, res) => {
+  usuarioController.uploadImage(req, res);
+});
 
 router.post("/uploadPost/:idUser", function (req, res) {
     postsController.uploadPost(req, res)

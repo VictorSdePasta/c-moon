@@ -125,10 +125,22 @@ function fillSelect(req, res) {
   }
 }
 
+function uploadImage(req, res) {
+  const imagem = req.file.filename;
+
+  postsModel.uploadImage(imagem)
+    .then(resultado => {
+      res.status(201).send("Imagem salva com sucesso");
+    }).catch(err => {
+      res.status(500).send(err);
+    });
+}
+
 module.exports = {
   uploadPost,
   lastPost,
   upload,
   connect,
-  fillSelect
+  fillSelect,
+  uploadImage
 };

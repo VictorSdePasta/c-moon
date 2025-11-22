@@ -1,4 +1,5 @@
 document.getElementById('userName').innerHTML = sessionStorage.NOME_USUARIO
+let idUser = sessionStorage.ID_USUARIO
 
 let subgenresTitle = []
 let subgenres = []
@@ -60,8 +61,6 @@ function post() {
   let title = inptTitle.value
   let tale = inptTale.value
 
-  let idUser = sessionStorage.ID_USUARIO
-
   let msg = ``
 
   if (title == ``) { msg += `Preencha o titulo da história <br>` }
@@ -96,7 +95,6 @@ function post() {
 }
 
 function lastPost() {
-  let idUser = sessionStorage.ID_USUARIO
 
   let otherSubG = inptOtherSubGenre.value
   let age = selAge.value
@@ -114,13 +112,19 @@ function lastPost() {
 
           let idPost = resp.id
 
+          if (input.files.length > 0) {
+            uploadImage()
+              .then(id => connectTables('imagem_post', idPost, id, 'imagem'))
+          }
+
+
           if (otherSubG != ``) {
             uploadOther('subgenero', otherSubG)
-              .then(id => connectTables("subgeneros_terror", idPost, id, "subgenero"))
+              .then(id => connectTables('subgenero_post', idPost, id, 'subgenero'))
           }
 
           subgenres.forEach(subgen => {
-            connectTables("subgeneros_terror", idPost, subgen, "subgenero");
+            connectTables('subgenero_post', idPost, subgen, 'subgenero');
           })
 
           if (age == '0') {
@@ -229,3 +233,16 @@ for (let i = 0; i < selectsToFill.length; i++) {
       console.log(`#ERRO: ${resposta}`);
     })
 };
+
+function upload(idPost) {
+  const formData = new FormData();
+  formData.append('postImage', postImage.files[0])
+
+  fetch(`/posts/uploadImage/${idPost}`, {
+    method: "POST",
+    body: formData
+  })
+    .catch(err => {
+      console.log(err);
+    })
+}

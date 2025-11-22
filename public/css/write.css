@@ -237,6 +237,15 @@ button {
   }
 }
 
+.uploadImagem {
+  display: flex !important;
+  color: #F25C05;
+  border: white 1px solid;
+  border-radius: 15px;
+  font-size: 1rem;
+  width: 95%;
+}
+
 .selects input {
   display: none;
 }

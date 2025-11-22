@@ -71,11 +71,18 @@ function fillSelect(selectType) {
   return database.executar(instrucaoSql);
 }
 
+function uploadImage(imagem) {
+  const instrucao = `insert into imagem (urlLink) values ('${imagem}');`
+
+  return database.executar(instrucao);
+}
+
 module.exports = {
   uploadPost,
   lastPost,
   upload,
   selectUploaded,
   connectPost,
-  fillSelect
+  fillSelect,
+  uploadImage
 }
