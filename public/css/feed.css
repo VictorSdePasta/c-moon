@@ -139,6 +139,7 @@ svg {
 
 #posts {
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
   margin-right: 5%;
 }

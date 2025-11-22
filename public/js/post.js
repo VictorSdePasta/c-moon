@@ -81,7 +81,6 @@ function post() {
 
       if (resposta.ok) {
         lastPost()
-        divMsg.innerHTML = "Post realizado com sucesso"
       } else {
         msg += `Houve um erro ao tentar realizar a postagem! Tente novamente mais tarde.`
         throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
@@ -112,7 +111,7 @@ function lastPost() {
 
           let idPost = resp.id
 
-          if (input.files.length > 0) {
+          if (postImage.files.length > 0) {
             uploadImage()
               .then(id => connectTables('imagem_post', idPost, id, 'imagem'))
           }
@@ -130,7 +129,7 @@ function lastPost() {
           if (age == '0') {
             uploadOther('epoca', otherAge)
               .then(id => { connectTables('epoca_post', idPost, id, 'epoca') })
-          } else if (age != '#') { connectTables('epoca_post', idPost, id, 'epoca') }
+          } else if (age != '#') { connectTables('epoca_post', idPost, age, 'epoca') }
 
           if (loc == '0') {
             uploadOther('local_narrativo', otherLoc)
@@ -140,7 +139,10 @@ function lastPost() {
           if (country == '0') {
             uploadOther('pais', otherCountry)
               .then(id => { connectTables('pais_post', idPost, id, 'pais') })
-          } else if (country != '#') { connectTables('pais_post', idPost, countryBody, 'pais') }
+          } else if (country != '#') { connectTables('pais_post', idPost, country, 'pais') }
+
+
+          divMsg.innerHTML = "Post realizado com sucesso"
         })
       }
     })
@@ -228,7 +230,14 @@ for (let i = 0; i < selectsToFill.length; i++) {
           opt.textContent = 'Outro'
           selectsToFill[i].appendChild(opt)
         })
+      } else {
+
+        const opt = document.createElement('option')
+        opt.value = '0'
+        opt.textContent = 'Outro'
+        selectsToFill[i].appendChild(opt)
       }
+
     }).catch(function (resposta) {
       console.log(`#ERRO: ${resposta}`);
     })
