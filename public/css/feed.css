@@ -281,3 +281,29 @@ button {
     margin-top: 1%;
   }
 }
+
+.line {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+select {
+  background: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  color: #F25C05;
+  font-family: "Grenze Gotisch", serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+  text-align: center;
+  height: 60px;
+  width: 300px;
+  background-image: url('../assets/imgs/button-web-right-top.png');
+}
+
+select:focus {
+  outline: none;
+}
