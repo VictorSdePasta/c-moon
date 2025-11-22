@@ -59,12 +59,12 @@ function connectPost(table, idPost, idTable, conTable) {
   return database.executar(instrucaoSql);
 }
 
-function fillSelect(selectType, selTypeCon) {
-  console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function selectType(): ", selectType, selTypeCon);
+function fillSelect(selectType) {
+  console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function selectType(): ", selectType);
 
 
   let instrucaoSql = `
-    select id_${selectType} as 'id', titulo as 'title' from ${selectType} join ${selTypeCon} on ${selectType}_id_${selectType} = id_${selectType};
+    select distinct id_${selectType} as 'id', titulo as 'title' from ${selectType};
   `
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);

@@ -107,14 +107,11 @@ function connect(req, res) {
 
 function fillSelect(req, res) {
   let selType = req.params.selectType
-  let selTypeCon = req.params.selectTypeConnect
 
   if (selType == undefined) {
     res.status(400).send("O tipo do select está indefinido!")
-  } else if (selTypeCon == undefined) {
-    res.status(400).send("O tipo do select está indefinido!")
-  } {
-    postsModel.fillSelect(selType, selTypeCon).then(function (resultado) {
+  } else {
+    postsModel.fillSelect(selType).then(function (resultado) {
       if (resultado.length > 0) {
         res.status(200).json(resultado)
       } else {

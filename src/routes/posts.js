@@ -11,7 +11,7 @@ router.get("/lastPost/:idUser", function (req, res) {
     postsController.lastPost(req, res)
 });
 
-router.get("/fillSelect/:selectType/:selectTypeConnect", function (req, res) {
+router.get("/fillSelect/:selectType", function (req, res) {
     postsController.fillSelect(req, res)
 });
 

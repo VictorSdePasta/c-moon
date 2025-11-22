@@ -202,10 +202,9 @@ let selCoun = document.getElementById('selCountry')
 
 let selectsToFill = [selSub, selA, selLoc, selCoun]
 let selectsType = ['subgenero', 'epoca', 'local_narrativo', 'pais']
-let selectsTypeConnect = ['subgeneros_terror', 'epoca_post', 'local_narrativo_post', 'pais_post']
 
 for (let i = 0; i < selectsToFill.length; i++) {
-  fetch(`/posts/fillSelect/${selectsType[i]}/${selectsTypeConnect[i]}`)
+  fetch(`/posts/fillSelect/${selectsType[i]}`)
     .then(function (resposta) {
       if (resposta.ok) {
         resposta.json().then(function (resposta) {

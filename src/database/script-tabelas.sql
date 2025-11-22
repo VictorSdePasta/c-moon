@@ -58,7 +58,7 @@ create table interacao (
   constraint fkinteracao_post foreign key (fk_interacao_post) references interacao(post_id_post)
 );
 
-create table subgeneros_terror(
+create table subgenero_post(
   subgenero_id_subgenero int,
   post_id_post int,
   principal tinyint,
@@ -110,4 +110,5 @@ create table local_narrativo_post (
 );
 
 select * from subgenero;
-select id_subgenero as 'id', titulo from subgeneros_terror join subgenero on subgenero_id_subgenero = id_subgenero;
+select * from post;
+select id_subgenero as 'id', titulo as 'title' from subgenero;
