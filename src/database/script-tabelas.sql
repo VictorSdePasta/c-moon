@@ -14,7 +14,7 @@ create table usuario(
 
 create table pais (
   id_pais int primary key auto_increment,
-  nome varchar(50)
+  titulo varchar(50)
 );
 
 create table imagem(
@@ -85,7 +85,7 @@ create table imagem_post (
 
 create table epoca (
   id_epoca int primary key auto_increment,
-  nome varchar(50)
+  titulo varchar(50)
 );
 
 create table epoca_post (
@@ -98,7 +98,7 @@ create table epoca_post (
 
 create table local_narrativo (
   id_local_narrativo int primary key auto_increment,
-  nome varchar(100)
+  titulo varchar(100)
 );
 
 create table local_narrativo_post (
@@ -108,3 +108,6 @@ create table local_narrativo_post (
   constraint fk_post_local_narrativo foreign key (local_narrativo_id_local_narrativo) references local_narrativo(id_local_narrativo),
   constraint fk_local_narrativo_post foreign key (post_id_post) references post(id_post)
 );
+
+select * from subgenero;
+select * from subgeneros_terror;
