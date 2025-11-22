@@ -94,32 +94,28 @@
       <div class="column selects">
         <div class="line">
           <div class="column">
-            <select id="selSubGenre" onclick="selectSubGenre()">
+            <select id="selSubGenre" onchange="selectSubGenre()">
               <option selected disabled value="#">Adicionar Subgênero</option>
-              <option value="99">Outro</option>
             </select>
             <input id="inptOtherSubGenre" placeholder="Digite o subgênero...">
             <div id="divSubGenreSelected"></div>
-            <div>
-              <button onclick="upload()">Adicionar Imagem</button>
+            <!-- <div>
+              <button onchange="upload()">Adicionar Imagem</button>
               <div class="spider"><img src="../assets/imgs/spider.png" alt="Aranha decorativa"></div>
             </div>
-            <div id="divImagesUploaded"></div>
+            <div id="divImagesUploaded"></div> -->
           </div>
           <div class="column">
-            <select id="selAge" onclick="selectAge()">
+            <select id="selAge" onchange="selectAge()">
               <option selected disabled value="#">Epóca do Conto</option>
-              <option value="99">Outro</option>
             </select>
             <input id="inptOtherAge" placeholder="Digite a época..."></input>
-            <select id="selLocation" onclick="selectLocation()">
+            <select id="selLocation" onchange="selectLocation()">
               <option selected disabled value="#">Local do Conto</option>
-              <option value="99">Outro</option>
             </select>
             <input id="inptOtherLocation" placeholder="Digite o local..."></input>
-            <select id="selCountry" onclick="selectCountry()">
+            <select id="selCountry" onchange="selectCountry()">
               <option selected disabled value="#">País de Origem</option>
-              <option value="99">Outro</option>
             </select>
             <input id="inptOtherCountry" placeholder="Digite o país..."></input>
           </div>

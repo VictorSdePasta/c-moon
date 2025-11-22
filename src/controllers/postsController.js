@@ -105,9 +105,33 @@ function connect(req, res) {
   }
 }
 
+function fillSelect(req, res) {
+  let selType = req.params.selectType
+  let selTypeCon = req.params.selectTypeConnect
+
+  if (selType == undefined) {
+    res.status(400).send("O tipo do select está indefinido!")
+  } else if (selTypeCon == undefined) {
+    res.status(400).send("O tipo do select está indefinido!")
+  } {
+    postsModel.fillSelect(selType, selTypeCon).then(function (resultado) {
+      if (resultado.length > 0) {
+        res.status(200).json(resultado)
+      } else {
+        res.status(204).json({})
+      }
+    }).catch(function (erro) {
+      console.log(erro)
+      console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+      res.status(500).json(erro.sqlMessage);
+    })
+  }
+}
+
 module.exports = {
   uploadPost,
   lastPost,
   upload,
-  connect
+  connect,
+  fillSelect
 };

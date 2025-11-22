@@ -110,4 +110,4 @@ create table local_narrativo_post (
 );
 
 select * from subgenero;
-select * from subgeneros_terror;
+select id_subgenero as 'id', titulo from subgeneros_terror join subgenero on subgenero_id_subgenero = id_subgenero;
