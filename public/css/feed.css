@@ -80,6 +80,7 @@ svg {
 .logo {
   position: fixed;
   align-self: flex-end;
+  z-index: 10;
 
   & img {
     width: 145px;
@@ -160,6 +161,7 @@ svg {
   padding: 2%;
   align-self: end;
   z-index: 1;
+  margin: 2% 0;
 }
 
 .header {
