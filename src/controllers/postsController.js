@@ -112,11 +112,7 @@ function fillSelect(req, res) {
     res.status(400).send("O tipo do select está indefinido!")
   } else {
     postsModel.fillSelect(selType).then(function (resultado) {
-      if (resultado.length > 0) {
-        res.status(200).json(resultado)
-      } else {
-        res.status(204).json({})
-      }
+      res.status(200).json(resultado)
     }).catch(function (erro) {
       console.log(erro)
       console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);

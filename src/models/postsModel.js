@@ -14,12 +14,7 @@ function uploadPost(title, tale, user) {
 function lastPost(user) {
   console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function lastPost()");
   var instrucaoSql = `
-        SELECT 
-          id_post
-        FROM post p
-            INNER JOIN usuario u
-                ON p.usuario_id_usuario = u.id_usuario
-        WHERE u.id_usuario = ${user} ORDER BY id_post DESC LIMIT 1;
+        SELECT id_post FROM post p INNER JOIN usuario u ON p.usuario_id_usuario = u.id_usuario WHERE u.id_usuario = ${user} ORDER BY id_post DESC LIMIT 1;
     `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
@@ -29,7 +24,7 @@ function upload(table, title) {
   console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function upload(): ", title, table);
 
   let instrucaoSql = `
-    INSERT INTO ${table} (titulo) VALUES ('${title}')
+    INSERT INTO ${table} (titulo) VALUES ('${title}');
   `
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);

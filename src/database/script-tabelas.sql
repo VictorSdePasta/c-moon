@@ -27,9 +27,7 @@ create table post(
   id_post int primary key auto_increment,
   titulo varchar(100),
   historia text,
-  dtPost datetime default current_timestamp,  
-  imagem_id_imagem int,
-  constraint fk_imagem_post foreign key (imagem_id_imagem) references imagem(id_imagem),
+  dtPost datetime default current_timestamp,
   usuario_id_usuario int
 );
 
@@ -49,15 +47,9 @@ create table interacao (
   curtiu tinyint,
   comentario text,
   dtInteracao date,
-  fk_id_interacao int,
-  fk_interacao_usuario int,
-  fk_interacao_post int,
-  primary key (id_interacao, usuario_id_usuario, post_id_post, fk_id_interacao, fk_interacao_usuario, fk_interacao_post),
+  primary key (id_interacao, usuario_id_usuario, post_id_post),
   constraint fk_usuario_interacao foreign key (usuario_id_usuario) references usuario(id_usuario),
-  constraint fk_post_interacao foreign key (post_id_post) references post(id_post),
-  constraint fkinteracao_interacao foreign key (fk_id_interacao) references interacao(id_interacao),
-  constraint fkinteracao_usuario foreign key (fk_interacao_usuario) references interacao(usuario_id_usuario),
-  constraint fkinteracao_post foreign key (fk_interacao_post) references interacao(post_id_post)
+  constraint fk_post_interacao foreign key (post_id_post) references post(id_post)
 );
 
 create table subgenero_post(
@@ -75,6 +67,14 @@ create table pais_post (
   primary key (pais_id_pais, post_id_post),
   constraint fk_pais_post foreign key (pais_id_pais) references pais(id_pais),
   constraint fk_post_pais foreign key (post_id_post) references post(id_post)
+);
+
+create table imagem_post (
+  imagem_id_imagem int,
+  post_id_post int,
+  primary key (imagem_id_imagem, post_id_post),
+  constraint fk_imagem_post foreign key (imagem_id_imagem) references imagem(id_imagem),
+  constraint fk_post_imagem foreign key (post_id_post) references post(id_post)
 );
 
 create table epoca (

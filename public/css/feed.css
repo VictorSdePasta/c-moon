@@ -193,6 +193,10 @@ h3 {
 .description {
   display: flex;
   flex-direction: column;
+  
+  & .line{
+    width: 100%;
+  }
 
   & h3 {
     color: #B4789C;
@@ -203,6 +207,7 @@ h3 {
 .sinopse {
   display: flex;
   justify-content: space-between;
+  text-align: justify;
 
   & span {
     margin-left: 2%;
@@ -211,6 +216,7 @@ h3 {
 
 .buttons {
   display: flex;
+  align-self: flex-end;
   align-items: center;
   width: fit-content;
 }

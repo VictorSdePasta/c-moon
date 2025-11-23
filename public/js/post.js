@@ -231,7 +231,6 @@ for (let i = 0; i < selectsToFill.length; i++) {
           selectsToFill[i].appendChild(opt)
         })
       } else {
-
         const opt = document.createElement('option')
         opt.value = '0'
         opt.textContent = 'Outro'
