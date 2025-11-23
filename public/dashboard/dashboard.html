@@ -92,7 +92,7 @@
         </div>
       </div>
       <div class="column">
-        <h1>Proporção subgênero de rumores rumores</h1>
+        <h1>Proporção subgênero de rumores</h1>
         <div class="grafico">
           <canvas id="grafProp"></canvas>
         </div>
@@ -103,71 +103,7 @@
 
 </html>
 
-<script>
-  const ctxTop5 = document.getElementById(`grafTop5`)
-  const ctxProp = document.getElementById(`grafProp`)
-
-  new Chart(ctxTop5, {
-    data: {
-      labels: `sadf`,
-      datasets: [{
-        type: 'bar',
-        label: `asfd`,
-        data: [0, 2],
-        backgroundColor: 'rgba(127, 92, 146, 1)'
-      }]
-    },
-    options: {
-      plugins: {
-        legend: {
-          display: false
-        }
-      },
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        x: {
-          ticks: {
-            color: '#5A4168',
-            font: {
-              size: 18,
-              weight: 'bold'
-            }
-          },
-          title: {
-            display: true,
-            text: 'Dispensadores',
-            color: '#5A4168',
-            font: {
-              size: 18,
-              weight: 'bold'
-            }
-          }
-        },
-        y: {
-          max: 100,
-          ticks: {
-            color: '#5A4168',
-            font: {
-              size: 18,
-              weight: 'bold'
-            }
-          },
-          title: {
-            display: true,
-            text: 'Nível de Abastecimento(%)',
-            color: '#5A4168',
-            font: {
-              size: 18,
-              weight: 'bold'
-            }
-          },
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script>
+<script src="../js/dashboard.js"></script>
 
 <script>
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
