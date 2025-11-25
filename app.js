@@ -20,6 +20,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 
 var postsRouter = require("./src/routes/posts");
 var feedRouter = require("./src/routes/feedContent");
+var dashRouter = require("./src/routes/dash");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -31,6 +32,7 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/posts", postsRouter);
 app.use("/feedContent", feedRouter);
+app.use("/dash", dashRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

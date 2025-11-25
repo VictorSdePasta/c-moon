@@ -6,6 +6,12 @@ fetch(`/posts/fillSelect/pais`)
       resposta.json().then(function (resposta) {
         console.log("Dados recebidos: ", JSON.stringify(resposta))
 
+        const optFinal = document.createElement('option')
+        optFinal.value = '0'
+        optFinal.textContent = 'Todos'
+        optFinal.selected = true 
+        selFeedCoun.appendChild(optFinal)
+
         for (let j = 0; j < resposta.length; j++) {
           let dados = resposta[j]
 
@@ -13,15 +19,8 @@ fetch(`/posts/fillSelect/pais`)
           opt.value = dados.id
           opt.textContent = dados.title
 
-          if (j == 0) { opt.selected = true }
-
           selFeedCoun.appendChild(opt)
         }
-
-        const optFinal = document.createElement('option')
-        optFinal.value = '0'
-        optFinal.textContent = 'Todos'
-        selFeedCoun.appendChild(optFinal)
 
         console.log(resposta[0].id)
         feed(resposta[0].id)
@@ -50,7 +49,7 @@ function feed(idPais) {
       console.log("Dados recebidos: ", JSON.stringify(resposta));
 
       const feedDiv = document.getElementById("posts");
-      feedDiv.innerHTML = ""; // limpa feed antes
+      feedDiv.innerHTML = "";
 
       resposta.forEach(function (publicacao) {
         fetch(`/feedContent/selPostSubgenres/${publicacao.idPost}`)
