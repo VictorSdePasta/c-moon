@@ -1,6 +1,6 @@
 let proximaAtualizacao
 
-window.onload = obterDadosGraficoBarra('0'), obterDadosGraficoPie()
+window.onload = obterDadosGraficoBarra('0'), obterDadosGraficoPie('0')
 
 function alterarTitulo(Pais) {
   let tituloRegiao = document.getElementById(`tituloRegiao}`)
@@ -8,7 +8,8 @@ function alterarTitulo(Pais) {
 }
 
 function obterDadosGraficoBarra(idPais) {
-  if (idPais != '0') {
+  console.log(idPais, 'id')
+  if (idPais != 0) {
     let pais = document.getElementById(`selRegiao`)
     let paisVal = pais.options[pais.selectedIndex].text
     alterarTitulo(paisVal)
@@ -22,8 +23,8 @@ function obterDadosGraficoBarra(idPais) {
     if (response.ok) {
       response.json().then(function (resposta) {
         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-        
-        plotarGraficoPie(resposta, idPais);
+
+        plotarGraficoBar(resposta);
       });
     } else {
       console.error('Nenhum dado encontrado ou erro na API');
@@ -35,7 +36,7 @@ function obterDadosGraficoBarra(idPais) {
 }
 
 function obterDadosGraficoPie(idPais) {
-  if (idPais != '0') {
+  if (idPais != 0) {
     let pais = document.getElementById(`selRegiao`)
     let paisVal = pais.options[pais.selectedIndex].text //
     alterarTitulo(paisVal)
@@ -49,8 +50,8 @@ function obterDadosGraficoPie(idPais) {
     if (response.ok) {
       response.json().then(function (resposta) {
         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-        
-        plotarGraficoPie(resposta, idPais);
+
+        plotarGraficoPie(resposta);
       });
     } else {
       console.error('Nenhum dado encontrado ou erro na API');
@@ -61,7 +62,7 @@ function obterDadosGraficoPie(idPais) {
     });
 }
 
-function plotarGraficoBarra(resposta) {
+function plotarGraficoBar(resposta) {
 
   console.log('iniciando plotagem do gráfico...');
 
@@ -84,8 +85,8 @@ function plotarGraficoBarra(resposta) {
   // Inserindo valores recebidos em estrutura para plotar o gráfico
   for (i = 0; i < resposta.length; i++) {
     var registro = resposta[i]
-    labels1.push(registro.locations)
-    dados1.datasets[0].data.push(registro.likes)
+    labels1.push(registro.pais)
+    dados1.datasets[0].data.push(registro.countPosts)
   }
 
   console.log('----------------------------------------------')
@@ -154,13 +155,12 @@ function plotarGraficoBarra(resposta) {
     }
   };
 
-  // Adicionando gráfico criado em div na tela
-  let myChart1 = new Chart(
+  let myChart = new Chart(
     document.getElementById(`grafTop5`),
     config1
   )
 
-  setTimeout(() => atualizarGrafico(idPais, dados1, myChart1), 2000);
+  // setTimeout(() => atualizarGraficoBar(idPais, dados1, myChart), 2000);
 }
 
 function plotarGraficoPie(resposta) {
@@ -172,25 +172,28 @@ function plotarGraficoPie(resposta) {
 
   // Criando estrutura para plotar gráfico - dados
   let dados1 = {
-    data: pieSubgData,
-    backgroundColor: [
-      "#D1120D",
-      "#B5383E",
-      "#EF6420",
-      "#EB5338",
-      "#BE6C46",
-      "#E47D72",
-      "#8A456E",
-      "#B325E6",
-      "#CB3BD1",
-      "#BD6BDB",
-      "#B789EB",
-      "#8170E5",
-      "#3934C8",
-      "#4E298D",
-      "#0C2465"
-    ],
-    borderWidth: 0
+    labels: labels1,
+    datasets: [{
+      data: [],
+      backgroundColor: [
+        "#D1120D",
+        "#662528ff",
+        "#EF6420",
+        "#cc513bff",
+        "#BE6C46",
+        "#E47D72",
+        "#8A456E",
+        "#B325E6",
+        "#CB3BD1",
+        "#BD6BDB",
+        "#B789EB",
+        "#8170E5",
+        "#3934C8",
+        "#4E298D",
+        "#0C2465"
+      ],
+      borderWidth: 0
+    }]
   };
 
   console.log('----------------------------------------------')
@@ -200,8 +203,8 @@ function plotarGraficoPie(resposta) {
   // Inserindo valores recebidos em estrutura para plotar o gráfico
   for (i = 0; i < resposta.length; i++) {
     var registro = resposta[i]
-    labels1.push(registro.locations)
-    dados1.datasets[0].data.push(registro.likes)
+    labels1.push(registro.subgenres)
+    dados1.datasets[0].data.push(registro.countSubgenres)
   }
 
   console.log('----------------------------------------------')
@@ -214,31 +217,32 @@ function plotarGraficoPie(resposta) {
 
   // Criando estrutura para plotar gráfico - config
   const config1 = {
-  type: "pie",
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: "right",
-        labels: {
-          color: "#ffffff",
-          usePointStyle: true,
-          font: {
-            size: 18,
-            weight: 'bold'
+    type: "pie",
+    data: dados1,
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: "right",
+          labels: {
+            color: "#ffffff",
+            usePointStyle: true,
+            font: {
+              size: 18,
+              weight: 'bold'
+            }
           }
+        },
+        tooltip: {
+          backgroundColor: "rgba(25, 10, 25, 0.9)",
+          borderColor: "#ff7a18",
+          borderWidth: 1,
+          titleColor: "#fff",
+          bodyColor: "#fff"
         }
-      },
-      tooltip: {
-        backgroundColor: "rgba(25, 10, 25, 0.9)",
-        borderColor: "#ff7a18",
-        borderWidth: 1,
-        titleColor: "#fff",
-        bodyColor: "#fff"
       }
     }
-  }
   };
 
   // Adicionando gráfico criado em div na tela
@@ -247,5 +251,5 @@ function plotarGraficoPie(resposta) {
     config1
   )
 
-  setTimeout(() => atualizarGrafico(idPais, dados1, myChart1), 2000);
+  // setTimeout(() => atualizarGraficoPie(idPais, dados1, myChart1), 2000);
 }
