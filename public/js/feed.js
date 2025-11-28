@@ -9,7 +9,7 @@ fetch(`/posts/fillSelect/pais`)
         const optFinal = document.createElement('option')
         optFinal.value = '0'
         optFinal.textContent = 'Todos'
-        optFinal.selected = true 
+        optFinal.selected = true
         selFeedCoun.appendChild(optFinal)
 
         for (let j = 0; j < resposta.length; j++) {
@@ -22,8 +22,7 @@ fetch(`/posts/fillSelect/pais`)
           selFeedCoun.appendChild(opt)
         }
 
-        console.log(resposta[0].id)
-        feed(resposta[0].id)
+        feed('0')
       })
     }
   }).catch(function (resposta) {
