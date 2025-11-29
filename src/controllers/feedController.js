@@ -62,8 +62,44 @@ function like(req, res) {
     });
 }
 
+function updateLike(req, res) {
+  let idPost = req.params.idPost
+  let idUser = req.params.idUser
+  let like = req.body.like
+
+  feedModel.updateLike(idPost, idUser, like).then(function (resultado) {
+    res.json(resultado)
+  }).catch(
+    function (erro) {
+      console.log(erro);
+      console.log(
+        "\nHouve um erro ao realizar o cadastro! Erro: ",
+        erro.sqlMessage
+      );
+      res.status(500).json(erro.sqlMessage);
+    })
+}
+
+function markLiked(req, res) {
+  let idUser = req.params.idUser
+
+  feedModel.markLiked(idUser).then(function (resultado) {
+    res.json(resultado)
+  }).catch(
+    function (erro) {
+      console.log(erro);
+      console.log(
+        "\nHouve um erro ao realizar o cadastro! Erro: ",
+        erro.sqlMessage
+      );
+      res.status(500).json(erro.sqlMessage);
+    })
+}
+
 module.exports = {
   fill,
   selPostSubgenres,
-  like
+  like,
+  updateLike,
+  markLiked
 };

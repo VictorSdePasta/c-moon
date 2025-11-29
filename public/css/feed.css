@@ -241,6 +241,14 @@ button {
   fill: #EA5905;
 }
 
+.like.marked svg g path {
+  fill: #EA5905;
+}
+
+.like.marked:hover svg g path {
+  fill: #B4789C;
+}
+
 .comment svg path {
   stroke: #B4789C;
 }

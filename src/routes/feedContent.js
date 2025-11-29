@@ -15,4 +15,12 @@ router.post("/like/:idPost/:idUser", function (req, res) {
     avisoController.like(req, res);
 });
 
+router.get("/markLiked/:idUser", function (req, res) {
+    avisoController.like(req, res);
+});
+
+router.put("/updateLike/:idPost/:idUser", function (req, res) {
+    avisoController.updateLike(req, res);
+});
+
 module.exports = router;
