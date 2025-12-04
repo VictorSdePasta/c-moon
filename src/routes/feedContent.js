@@ -1,26 +1,26 @@
 var express = require("express");
 var router = express.Router();
 
-var avisoController = require("../controllers/feedController");
+var feedController = require("../controllers/feedController");
 
 router.get("/fill/:pais", function (req, res) {
-    avisoController.fill(req, res);
+    feedController.fill(req, res);
 });
 
 router.get("/selPostSubgenres/:post", function (req, res) {
-    avisoController.selPostSubgenres(req, res);
+    feedController.selPostSubgenres(req, res);
 });
 
 router.post("/like/:idPost/:idUser", function (req, res) {
-    avisoController.like(req, res);
+    feedController.like(req, res);
 });
 
 router.get("/markLiked/:idUser", function (req, res) {
-    avisoController.like(req, res);
+    feedController.markLiked(req, res);
 });
 
 router.put("/updateLike/:idPost/:idUser", function (req, res) {
-    avisoController.updateLike(req, res);
+    feedController.updateLike(req, res);
 });
 
 module.exports = router;

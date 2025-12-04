@@ -48,7 +48,7 @@ function updateLike(idPost, idUser, like) {
   console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function updateLike()", idPost, idUser, like);
 
   var instrucaoSql = `
-        insert into interacao (post_id_post,usuario_id_usuario, curtiu) values ('${idPost}', '${idUser}', '${like}');
+        update interacao set curtiu = ${like} where post_id_post = ${idPost} and usuario_id_usuario = ${idUser};
       `;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -59,7 +59,7 @@ function markLiked(idUser) {
   console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function markLiked()", idUser);
 
   var instrucaoSql = `
-        select p.id_post idPost from post p join interacao it on it.post_id_post = p.id_post join usuario u on u.id_usuario = it.usuario_id_usuario where it.curtiu = 1 and it.usuario_id_usuario = '${idUser}';
+        select p.id_post idPost, it.curtiu liked from post p join interacao it on it.post_id_post = p.id_post join usuario u on u.id_usuario = it.usuario_id_usuario where it.curtiu = 1 and it.usuario_id_usuario = '${idUser}';
       `;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);

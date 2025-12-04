@@ -111,3 +111,5 @@ create table local_narrativo_post (
   constraint fk_post_local_narrativo foreign key (local_narrativo_id_local_narrativo) references local_narrativo(id_local_narrativo),
   constraint fk_local_narrativo_post foreign key (post_id_post) references post(id_post)
 );
+
+select s.titulo as postSubg from subgenero_post sp join subgenero s on s.id_subgenero = sp.subgenero_id_subgenero where post_id_post = 1;
