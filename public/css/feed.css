@@ -167,6 +167,7 @@ svg {
 .header {
   display: flex;
   width: 100%;
+  justify-content: space-between;
 }
 
 .user {
@@ -323,4 +324,8 @@ select {
 
 select:focus {
   outline: none;
+}
+
+.periodTime {
+  color: #B4789C;
 }

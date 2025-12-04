@@ -8,7 +8,7 @@ async function carregar() {
     .then(function (resposta) {
       if (resposta.ok) {
         resposta.json().then(function (resposta) {
-  
+
 
           const optFinal = document.createElement('option')
           optFinal.value = '0'
@@ -66,6 +66,19 @@ async function feed(idPais) {
   for (let i = 0; i < publicacoes.length; i++) {
     const publicacao = publicacoes[i];
 
+    let dataAtual = new Date(Date.now())
+    let dtInicial = new Date(publicacao.dtPost).getTime()
+    let dtFinal = new Date(dataAtual).getTime()
+
+    let seg = Math.floor(Math.abs(dtFinal - dtInicial) / 1000)
+    let dias = Math.floor(seg / 86400)
+    seg %= 86400
+    let horas = Math.floor(seg / 3600)
+    seg %= 3600
+    let minutos = Math.floor(seg / 60)
+    seg %= 60
+    tempo = `${dias > 0 ? `${dias} dias ` : horas > 0 ? `${horas} horas` : minutos > 0 ? `${minutos} minutos` : ``}`
+
     let pubSubgenres = "";
 
     try {
@@ -91,6 +104,7 @@ async function feed(idPais) {
               <h3 id="h3PostUserName">${publicacao.userName}</h3>
             </div>
             <div class="legends">${pubSubgenres}${pubAge}${pubCountry}${pubLocation}</div>
+            <div id="divTimePost${publicacao.idPost}" class="periodTime">${tempo}</div>
           </div>
           <div class="postImages">
             ${publicacao.postImg ? `<img src="${publicacao.postImg}">` : ""}
