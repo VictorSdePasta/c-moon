@@ -158,7 +158,7 @@ function like(idPost) {
       }
     }).catch(function (resposta) {
     })
-  } else if (!button.classList.contains(`marked`)) {
+  } else if (!button.classList.contains(`marked`) && button.classList.contains(`alrLiked`)) {
     button.classList.add(`marked`)
     divPost.innerHTML = Number(divPost.innerHTML) + 1
     liked = 1
@@ -179,7 +179,8 @@ function like(idPost) {
     }).catch(function (resposta) {
     })
   } else {
-    button.classList.add(`alrLiked marked`)
+    button.classList.add(`alrLiked`)
+    button.classList.add(`marked`)
     divPost.innerHTML = Number(divPost.innerHTML) + 1
     liked = 1
 

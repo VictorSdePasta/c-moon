@@ -53,9 +53,9 @@ function selectCountry() {
   else { inptCountry.style.display = 'none' }
 }
 
-function uploadImage() {
-  let divImages = divImagesUploaded
-}
+// function uploadImage() {
+//   let divImages = divImagesUploaded
+// }
 
 function post() {
   let title = inptTitle.value
@@ -111,10 +111,10 @@ function lastPost() {
 
           let idPost = resp.id
 
-          if (postImage.files.length > 0) {
-            uploadImage()
-              .then(id => connectTables('imagem_post', idPost, id, 'imagem'))
-          }
+          // if (postImage.files.length > 0) {
+          //   uploadImage()
+          //     .then(id => connectTables('imagem_post', idPost, id, 'imagem'))
+          // }
 
 
           if (otherSubG != ``) {

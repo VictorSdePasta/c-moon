@@ -4,7 +4,7 @@ window.onload = obterDadosGraficoBarra('0'), obterDadosGraficoPie('0')
 
 function alterarTitulo(Pais) {
   let tituloRegiao = document.getElementById(`tituloRegiao}`)
-  tituloRegiao.innerHTML = "Top 5 regiões com mais rumores em " + Pais
+  tituloRegiao.innerHTML = "Top 5 países com mais rumores em " + Pais
 }
 
 function obterDadosGraficoBarra(idPais) {
@@ -201,10 +201,17 @@ function plotarGraficoPie(resposta) {
   console.log(resposta)
 
   // Inserindo valores recebidos em estrutura para plotar o gráfico
+  let total = 0
+  for (i = 0; i < resposta.length; i++) {
+    var registro = resposta[i]
+    total += Number(registro.countSubgenres)
+  }
+
   for (i = 0; i < resposta.length; i++) {
     var registro = resposta[i]
     labels1.push(registro.subgenres)
-    dados1.datasets[0].data.push(registro.countSubgenres)
+    let prop = (Number(registro.countSubgenres) / total * 100).toFixed()
+    dados1.datasets[0].data.push(prop)
   }
 
   console.log('----------------------------------------------')
