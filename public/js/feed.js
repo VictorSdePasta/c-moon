@@ -77,7 +77,7 @@ async function feed(idPais) {
     seg %= 3600
     let minutos = Math.floor(seg / 60)
     seg %= 60
-    tempo = `${dias > 0 ? `${dias} dias ` : horas > 0 ? `${horas} horas` : minutos > 0 ? `${minutos} minutos` : ``}`
+    tempo = `${dias > 0 ? `${dias} dias ` : horas > 0 ? `${horas} horas` : minutos > 0 ? `${minutos} minutos` : `Agora`}`
 
     let pubSubgenres = "";
 

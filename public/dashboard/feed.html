@@ -82,7 +82,7 @@
   <div class="pageContainer">
     <div class="logo" onclick="easterEgg()"><img src="../assets/imgs/logo.png" alt="Logo da C-Moon"></div>
     <div class="feed">
-      <div class="highlights">
+      <!-- <div class="highlights">
         <div class="line">
           <h1>Destaques do país</h1>
           <select id="selFeedCountry" onchange="selectFeedCountry()">
@@ -117,10 +117,15 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="sectionSplit"></div>
+      </div> -->
+      <!-- <div class="sectionSplit"></div> -->
       <div class="feed">
-        <h1>Posts mais recente do país</h1>
+        <div class="line">
+          <h1>Posts mais recente do país</h1>
+          <select id="selFeedCountry" onchange="selectFeedCountry()">
+            <option disabled value="#">Selecione o país</option>
+          </select>
+        </div>
         <div id="posts">
         </div>
       </div>

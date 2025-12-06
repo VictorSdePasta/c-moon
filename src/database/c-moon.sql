@@ -111,3 +111,27 @@ create table local_narrativo_post (
   constraint fk_post_local_narrativo foreign key (local_narrativo_id_local_narrativo) references local_narrativo(id_local_narrativo),
   constraint fk_local_narrativo_post foreign key (post_id_post) references post(id_post)
 );
+
+insert into subgenero (titulo) values
+('Ação'),
+('Comédia'),
+('Drama'),
+('Fantasia'),
+('Folclore'),
+('Mistério'),
+('Romance'),
+('Suspense');
+
+insert into epoca (titulo) values
+('Era Moderna'),
+('Era Medieval'),
+('Anos 1900');
+
+insert into local_narrativo (titulo) values
+('Oregon'),
+('Tokyo');
+
+insert into pais (titulo) values
+('Brasil'),
+('Estados Unidos'),
+('Japão');
